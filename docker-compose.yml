@@ -1,0 +1,11 @@
+services:
+  reviewer:
+    build: .
+    container_name: multi-agent-reviewer
+    ports:
+      - "8000:8000"
+    environment:
+      LOG_LEVEL: INFO
+    volumes:
+      - ./data/results:/app/data/results
+    restart: unless-stopped
