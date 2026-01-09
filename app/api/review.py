@@ -1,7 +1,11 @@
 from fastapi import APIRouter
 from app.models.schemas import AdInput, ReviewResult, AgentIssue
+from app.core.orchestrator import ReviewOrchestrator
 
 router = APIRouter(prefix="/api")
+
+orchestrator = ReviewOrchestrator()
+
 
 @router.post("/review", response_model=ReviewResult)
 def review_ad(ad: AdInput) -> ReviewResult:
@@ -13,17 +17,4 @@ def review_ad(ad: AdInput) -> ReviewResult:
     :return: Description
     :rtype: ReviewResult
     """
-    # Заглушка оркестратора - будет заменена на real orchestrator
-    return ReviewResult(
-        risk_score=0.0,
-        quality_score=0.5,
-        verdict="revise",
-        improved_text=None,
-        issue=[
-            AgentIssue(
-                agent="stub",
-                code="NOT_IMPLEMENTED",
-                message="Review logic is not implemented yet",
-            )
-        ],
-    )
+    return orchestrator.run_review(ad)
