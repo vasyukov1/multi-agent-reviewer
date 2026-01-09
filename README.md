@@ -2,7 +2,7 @@
 
 1. Создать venv и установить зависимости.
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
@@ -37,4 +37,22 @@ curl -X POST http://localhost:8000/api/review \
 7. Запуск тестов
 ```bash
 pytest tests/test_auditor.py -v
+```
+
+8. Проверка Quality Agent
+```bash
+python3 - <<EOF
+from app.agents.quality import QualityAgent
+from app.models.schemas import AdInput
+
+agent = QualityAgent()
+ad = AdInput(
+    title="Продам велосипед",
+    description="Почти новый, отличное состояние, алюминиевая рама",
+    category="sport"
+)
+
+score, issues = agent.analyze(ad)
+print(score, issues)
+EOF
 ```
