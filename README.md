@@ -56,3 +56,14 @@ score, issues = agent.analyze(ad)
 print(score, issues)
 EOF
 ```
+
+9. Проверка Review
+```bash
+curl -X POST http://localhost:8000/api/review \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "Cheap iPhone",
+    "description": "Not a scam, write to test@example.com",
+    "category": "electronics"
+  }'
+```
