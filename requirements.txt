@@ -6,3 +6,4 @@ black>=25.12.0
 torch>=2.9
 sentence-transformers>=5.2
 numpy>=2.4.0
+transformers>=4.57
