@@ -51,7 +51,7 @@ class JudgeAgent:
         if final_score >= self.published_threshold:
             verdict = "publish"
         elif final_score >= self.revise_threshold:
-            verdict = "verise"
+            verdict = "revise"
         else:
             verdict = "reject"
         

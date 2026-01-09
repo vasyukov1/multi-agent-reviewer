@@ -66,7 +66,7 @@ class ReviewOrchestrator:
         return ReviewResult(
             risk_score=risk_score,
             quality_score=quality_score,
-            issue=final_issues,
+            issues=final_issues,
             verdict=verdict,
             improved_text=None,
         )
