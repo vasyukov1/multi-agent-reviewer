@@ -33,3 +33,8 @@ curl -X POST http://localhost:8000/api/review \
   -H "Content-Type: application/json" \
   -d '{"title":"Продам велосипед","description":"Почти новый","category":"sport"}'
 ```
+
+7. Запуск тестов
+```bash
+pytest tests/test_auditor.py -v
+```
