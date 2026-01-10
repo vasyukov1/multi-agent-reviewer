@@ -22,7 +22,7 @@ class QualityModel(nn.Module):
             "persuasion": nn.Linear(hidden_dim, 1),
         })
 
-    def forward(self, input_ids, attention_mask):
+    def forward(self, input_ids=None, attention_mask=None, **kwargs):
         out = self.encoder(
             input_ids=input_ids,
             attention_mask=attention_mask
