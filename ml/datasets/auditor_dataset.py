@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import List
 import torch
 from torch.utils.data import Dataset
-
+from ml.models.auditor_model import RISK_LABELS
 
 @dataclass
 class AuditorSample:
@@ -31,9 +31,14 @@ class AuditorDataset(Dataset):
             return_tensors="pt",
         )
 
+        risk_labels = torch.tensor(
+            [s.risk_labels[k] for k in RISK_LABELS],
+            dtype=torch.float,
+        )
+
         return {
             "input_ids": enc["input_ids"].squeeze(0),
             "attention_mask": enc["attention_mask"].squeeze(0),
             "risk_score": torch.tensor(s.risk_score, dtype=torch.float),
-            "risk_labels": torch.tensor(s.risk_labels, dtype=torch.float),
+            "risk_labels": risk_labels,
         }
