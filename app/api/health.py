@@ -18,5 +18,5 @@ def health_check() -> dict:
     return {
         "status": "ok", 
         "uptime_seconds": uptime_seconds, 
-        "models_loaded": False
+        "models_loaded": True,
     }

@@ -19,9 +19,13 @@ COPY requirements.txt .
 RUN pip install --upgrade pip \
     && pip install -r requirements.txt
 
+# Weights
+COPY weights ./weights
+
 # Application code
-COPY app ./app
+COPY ml ./ml
 COPY data ./data
+COPY app ./app
 
 # Runtime
 EXPOSE 8000
